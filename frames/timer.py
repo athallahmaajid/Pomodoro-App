@@ -15,14 +15,14 @@ class Timer(ttk.Frame):
         self.timer_running = False
         self._timer_decrement_job = None
 
-        timer_description = ttk.Label(self, textvariable=self.current_timer_label)
+        timer_description = ttk.Label(self, textvariable=self.current_timer_label, font=('Times New Roman', 18))
 
         timer_description.grid(row=0, column=0, sticky="W", padx=(10, 0), pady=(10, 0))
 
         timer_frame = ttk.Frame(self, height="100")
         timer_frame.grid(pady=(10, 0), sticky="NSEW")
 
-        timer_counter = ttk.Label(timer_frame, textvariable=self.current_time)
+        timer_counter = ttk.Label(timer_frame, textvariable=self.current_time, font=('FreeMono', 44))
         timer_counter.place(relx=0.5, rely=0.5, anchor="center")
 
         button_container = ttk.Frame(self, padding=10)
