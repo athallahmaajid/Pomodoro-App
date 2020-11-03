@@ -26,10 +26,10 @@ class Timer(ttk.Frame):
 
         timer_description = ttk.Label(self, textvariable=self.current_timer_label, style='LightText.TLabel')
 
-        timer_description.grid(row=0, column=0, sticky="W", padx=(10, 0), pady=(10, 0))
+        timer_description.grid(row=0, column=0, sticky="W", pady=5)
 
         setting_button = ttk.Button(self, text='Setting', command=show_settings, cursor='hand2', style='PomodoroButton.TButton')
-        setting_button.grid(row=0, column=1, sticky='E', padx=10, pady=10)
+        setting_button.grid(row=0, column=1, sticky='E', pady=5)
 
         timer_frame = ttk.Frame(self, height="100", style='Timer.TFrame')
         timer_frame.grid(row=1, column=0, columnspan=2, pady=10, sticky='NEWS')
@@ -75,8 +75,8 @@ class Timer(ttk.Frame):
     def decrement_time(self):
         current_time = self.current_time.get()
 
-        if self.timer_running and current_time != "00:00":            
-            play('/home/maajid/Documents/Github/Pomodoro-App/frames/tick.mp3')
+        if self.timer_running and current_time != "00:00":
+            play('tick.mp3')
             minutes, seconds = current_time.split(":")
 
             if int(seconds) > 0:
@@ -89,7 +89,7 @@ class Timer(ttk.Frame):
             self.current_time.set(f"{minutes:02d}:{seconds:02d}")
             self._timer_decrement_job = self.after(1000, self.decrement_time)
         elif self.timer_running and current_time == "00:00":
-            play('/home/maajid/Documents/Github/Pomodoro-App/frames/beep-06.mp3')
+            play('beep-06.mp3')
             self.controller.timer_schedule.rotate(-1)
             next_up = self.controller.timer_schedule[0]
             self.current_timer_label.set(next_up)
